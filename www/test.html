@@ -1,27 +1,16 @@
 ﻿<html>
     <head>
-<!--         <script type="text/javascript" charset="utf-8" src="assets/scripts/cordova.js"></script> -->
+        <script type="text/javascript" charset="utf-8" src="email_composer.js"></script>
         <script type="text/javascript">
-        function deviceready() {
-            console.log("Device ready");
-            navigator.compass.watchHeading(function(heading){
-                document.getElementById("heading").innerHTML = heading.trueHeading;
-            },function(error){
-                var errorType;
-                switch(error.code){
-                    case CompassError.COMPASS_NOT_SUPPORTED:
-                        errorType = "Compass not supported";
-                        break;
-                    case CompassError.COMPASS_INTERNAL_ERR:
-                        errorType = "Compass internal error";
-                        break;
-                    default:
-                        errorType = "Unknown compass error";
+        try{
+             window.plugin.email.isServiceAvailable(
+                function (isAvailable) {
+                    alert(isAvailable ? 'Service is available' : 'Service NOT available');
                 }
-                document.getElementById("heading").innerHTML = errorType;
-            });
+            );
+        }catch(e){
+            alert(e);
         }
-        document.addEventListener("deviceready", deviceready, true);
         </script>
     </head>
     <body>
